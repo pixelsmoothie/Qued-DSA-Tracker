@@ -33,7 +33,7 @@ Qued relies on an AI Engine to judge your code. You have two ways to set this up
 ### Option 1: Local Setup (Recommended if you have a powerful GPU)
 If you have an NVIDIA or high-end AMD/Apple GPU, you can run the AI entirely on your own machine using Ollama.
 
-1.  **Download Ollama**: Visit ollama.com and download the installer for Windows.
+1.  **Download Ollama**: Visit [ollama.com](https://ollama.com) and download the installer for Windows.
 2.  **Install & Run**: Run the installer. You will see the Ollama icon in your system tray.
 3.  **Download a Model**: Open your terminal (Command Prompt or PowerShell) and type:
     ```bash
@@ -45,11 +45,11 @@ If you have an NVIDIA or high-end AMD/Apple GPU, you can run the AI entirely on 
 If you don't have a strong GPU, you can use "Cloud" AI keys. Qued supports several providers:
 
 *   **Groq (Fastest)**: 
-    - Go to console.groq.com.
+    - Go to [console.groq.com](https://console.groq.com/keys).
     - Sign in and click "Create API Key."
     - Copy the key and paste it into the Settings menu inside Qued.
 *   **OpenRouter**:
-    - Go to openrouter.ai.
+    - Go to [openrouter.ai](https://openrouter.ai/keys).
     - Create a key to access a wide variety of models like GPT-4 or Claude 3.
 *   **Ollama Cloud**:
     - If you are using a managed Ollama instance, find your API key in your account dashboard.
