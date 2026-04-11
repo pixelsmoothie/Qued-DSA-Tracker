@@ -1,17 +1,19 @@
-# 🕋 Qued User Guide & Platform Overview
+# Qued User Guide & Platform Overview
 
 <p align="center">
-  <img src="YOUR_LOGO_URL" width="200" alt="Qued Logo" />
+  <img src="<img width="2048" height="2048" alt="qued_icon" src="https://github.com/user-attachments/assets/bec8f6fb-f4be-4277-bc03-7b82985b7277" />
+" width="200" alt="Qued Logo" />
 </p>
 
 Welcome to the Qued Framework, your professional workspace for conquering Data Structures & Algorithms. This guide will walk you through the platform's layout and how to configure your AI Engine.
 
 ---
 
-## 🖥️ The Workspace
+## The Workspace
 
 <p align="center">
-  <img src="YOUR_WORKSPACE_IMAGE_URL" width="100%" alt="Qued Workspace" />
+  <img src="<img width="1919" height="1107" alt="Screenshot 2026-04-11 162731" src="https://github.com/user-attachments/assets/bbfbf722-380c-4014-b28b-ad2e32f4243e" />
+" width="100%" alt="Qued Workspace" />
 </p>
 
 ---
