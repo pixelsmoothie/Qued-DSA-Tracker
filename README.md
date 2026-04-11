@@ -1,19 +1,17 @@
 # Qued User Guide & Platform Overview
 
 <p align="center">
-  <img src="<img width="2048" height="2048" alt="qued_icon" src="https://github.com/user-attachments/assets/bec8f6fb-f4be-4277-bc03-7b82985b7277" />
-" width="200" alt="Qued Logo" />
+  <img src="https://github.com/user-attachments/assets/bec8f6fb-f4be-4277-bc03-7b82985b7277" width="200" alt="Qued Logo" />
 </p>
 
-Welcome to the Qued Framework, your professional workspace for conquering Data Structures & Algorithms. This guide will walk you through the platform's layout and how to configure your AI Engine.
+Welcome to the Qued Framework, your organized workspace for learning Data Structures & Algorithms. This guide will walk you through the platform's layout and how to configure your AI Engine.
 
 ---
 
 ## The Workspace
 
 <p align="center">
-  <img src="<img width="1919" height="1107" alt="Screenshot 2026-04-11 162731" src="https://github.com/user-attachments/assets/bbfbf722-380c-4014-b28b-ad2e32f4243e" />
-" width="100%" alt="Qued Workspace" />
+  <img src="https://github.com/user-attachments/assets/bbfbf722-380c-4014-b28b-ad2e32f4243e" width="100%" alt="Qued Workspace" />
 </p>
 
 ---
@@ -49,24 +47,30 @@ If you have an NVIDIA or high-end AMD/Apple GPU, you can run the AI entirely on 
 
 1.  **Download Ollama**: Visit [ollama.com](https://ollama.com) and download the installer for Windows.
 2.  **Install & Run**: Run the installer. You will see the Ollama icon in your system tray.
-3.  **Download a Model**: Open your terminal (Command Prompt or PowerShell) and type:
-    ```bash
-    ollama run llama3
-    ```
-    *This will download and run the model. Qued will now be able to communicate with your local AI via its standard port (11434).*
+3.  **Choose your Model based on VRAM**:
+    Open your terminal (Command Prompt or PowerShell) and run the command for your hardware:
+
+| VRAM / RAM | Recommended Model | Command |
+| :--- | :--- | :--- |
+| **4GB - 6GB** | Qwen 2.5 Coder (3B) | `ollama run qwen2.5-coder:3b` |
+| **4GB - 6GB** | Gemma 3 (4B) | `ollama run gemma3:4b` |
+| **8GB - 12GB** | Qwen 2.5 Coder (7B) | `ollama run qwen2.5-coder:7b` |
+| **8GB - 12GB** | Llama 3 (8B) | `ollama run llama3` |
+| **Deep Reasoning** | DeepSeek R1 (8B) | `ollama run deepseek-r1:8b` |
+
+*Qued will automatically detect your running local model via port 11434.*
+
+---
 
 ### Option 2: Cloud API Setup (Recommended for low spec Laptops or older hardware)
 If you don't have a strong GPU, you can use "Cloud" AI keys. Qued supports several providers:
 
 *   **Groq (Fastest)**: 
     - Go to [console.groq.com](https://console.groq.com/keys).
-    - Sign in and click "Create API Key."
-    - Copy the key and paste it into the Settings menu inside Qued.
 *   **OpenRouter**:
     - Go to [openrouter.ai](https://openrouter.ai/keys).
-    - Create a key to access a wide variety of models like GPT-4 or Claude 3.
 *   **Ollama Cloud**:
-    - If you are using a managed Ollama instance, find your API key in your account dashboard.
+    - find your API key in your account dashboard.
 
 ---
 
