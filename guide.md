@@ -41,7 +41,7 @@ If you have an NVIDIA or high-end AMD/Apple GPU, you can run the AI entirely on 
     ```
     *This will download and run the model. Qued will now be able to communicate with your local AI via its standard port (11434).*
 
-### Option 2: Cloud API Setup (Recommended for Laptops or older hardware)
+### Option 2: Cloud API Setup (Recommended for low spec Laptops or older hardware)
 If you don't have a strong GPU, you can use "Cloud" AI keys. Qued supports several providers:
 
 *   **Groq (Fastest)**: 
