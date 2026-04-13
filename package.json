@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "tauri:dist": "tauri build && powershell -Command \"Move-Item -Path 'src-tauri/target/release/bundle/nsis/Qued_v.1_1.0.0_x64-setup.exe' -Destination 'Qued_v.1.exe' -Force\""
+    "tauri": "tauri",
+    "tauri:dist": "tauri build && powershell -Command \"Move-Item -Path 'src-tauri/target/release/bundle/nsis/Qued_v.1_1.0.1_x64-setup.exe' -Destination 'Qued_v.1.exe' -Force\""
   },
   "dependencies": {
     "@monaco-editor/react": "^4.7.0",
