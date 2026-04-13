@@ -11,7 +11,7 @@ import {
   ListTodo, Code2, Settings, TerminalSquare, AlertCircle,
   Circle, CheckCircle2, Bot, Activity, ExternalLink, ChevronRight, ChevronLeft,
   Keyboard, Sun, Clock, Calendar, History, Monitor, Maximize2, Minimize2, Trophy,
-  Archive, Coffee, X, Swords, User, Sparkles
+  Archive, Coffee, X, Swords, User, Sparkles, ScrollText
 } from "lucide-react";
 import { format } from "date-fns";
 import MissionEditor from "../components/MissionEditor";
@@ -29,6 +29,33 @@ import { supabase } from "../lib/supabase";
 
 type View = "tasks" | "workspace" | "progress" | "missed" | "completed" | "settings" | "test" | "interview" | "inventory" | "duel";
 type WorkspaceTab = "video" | "scratchpad";
+
+const CHANGELOG = [
+  {
+    version: "1.0.1",
+    title: "Version 1.0.1",
+    date: "April 13, 2026",
+    changes: [
+      "In-App Updates: Automated distribution and installation system.",
+      "Task Reminders: Periodic notifications for unfinished daily goals.",
+      "Cloud Engine: Improved stability and error handling for AI providers.",
+      "UI Refinement: Enhanced animations and cleaner message formatting.",
+      "Proxy Bridge: Renamed internal fetch engine for better compatibility.",
+      "Response Filtering: Automated removal of reasoning tags from assistant outputs."
+    ]
+  },
+  {
+    version: "0.1.0",
+    title: "Version 0.1.0",
+    date: "April 10, 2026",
+    changes: [
+      "Core DSA Mission tracking.",
+      "Local AI integration via Ollama.",
+      "A2Z SDE Sheet integration."
+    ]
+  }
+];
+
 
 function getYouTubeId(url: string) {
   if (!url) return null;
@@ -343,7 +370,7 @@ export default function App() {
   const [externalBaseUrl, setExternalBaseUrl] = useState(
     (typeof window !== 'undefined' ? localStorage.getItem("base_url") : "") || ""
   );
-  const [settingsTab, setSettingsTab] = useState<"general" | "process" | "danger" | "profile" | "customization" | "feedback" | "admin">("profile");
+  const [settingsTab, setSettingsTab] = useState<"general" | "process" | "danger" | "profile" | "customization" | "feedback" | "admin" | "changelog">("profile");
   const [localUser, setLocalUser] = useState<{ id: string; name: string; role?: string } | null>(null);
   const [rotationPillCollapsed, setRotationPillCollapsed] = useState(false);
 
@@ -1215,6 +1242,7 @@ export default function App() {
 
                   {([
                     { id: "profile", label: "System Profile" },
+                    { id: "changelog", label: "Changelogs" },
                     { id: "customization", label: "Customization" },
                     { id: "process", label: "Process Core" },
                     { id: "feedback", label: "Feedback Hub" },
@@ -1233,11 +1261,62 @@ export default function App() {
                       {tab.label}
                     </button>
                   ))}
+
+                  <div className="mt-auto px-4 py-4 space-y-1">
+                    <p className="text-[10px] font-black text-claude-muted/40 uppercase tracking-[0.2em]">Qued System</p>
+                    <p className="text-[10px] font-mono text-indigo-400/50 uppercase tracking-widest">Build v1.0.1</p>
+                  </div>
                 </div>
 
                 <div className="flex-1 overflow-y-auto pl-8 pr-12 border-l border-claude-border custom-scrollbar">
                   <div className="max-w-4xl mx-auto w-full">
                     <AnimatePresence mode="wait">
+                      {/* Changelog Tab */}
+                      {settingsTab === "changelog" && (
+                        <motion.div
+                          key="changelog"
+                          initial={{ opacity: 0, x: 10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0, x: -10 }}
+                          className="space-y-8"
+                        >
+                          <div className="flex items-center gap-4 mb-4">
+                            <div className="p-3 bg-indigo-500/10 rounded-2xl border border-indigo-500/20">
+                              <ScrollText size={20} className="text-indigo-400" />
+                            </div>
+                            <div>
+                              <h3 className="text-2xl font-black uppercase tracking-tighter">Changelogs</h3>
+                              <p className="text-xs text-claude-muted">System logs and enhancement chronicles.</p>
+                            </div>
+                          </div>
+
+                          <div className="space-y-12 pt-4">
+                            {CHANGELOG.map((entry, idx) => (
+                              <div key={entry.version} className="relative pl-10 border-l border-claude-border pb-4">
+                                <div className="absolute top-0 left-[-5px] w-2.5 h-2.5 rounded-full bg-indigo-500 shadow-[0_0_15px_rgba(99,102,241,0.5)]" />
+                                <div className="space-y-4">
+                                  <div className="flex justify-between items-end">
+                                    <div>
+                                      <h4 className="text-lg font-bold text-white uppercase tracking-tight">{entry.title}</h4>
+                                      <p className="text-[10px] font-black text-indigo-400 uppercase tracking-widest leading-none mt-1">Version {entry.version}</p>
+                                    </div>
+                                    <span className="text-[10px] font-bold text-claude-muted uppercase tracking-widest">{entry.date}</span>
+                                  </div>
+                                  <ul className="space-y-3">
+                                    {entry.changes.map((change, i) => (
+                                      <li key={i} className="flex gap-4 items-start group">
+                                        <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-claude-accent/30 group-hover:bg-claude-accent transition-colors shrink-0" />
+                                        <span className="text-sm text-claude-muted group-hover:text-claude-text transition-colors leading-relaxed">{change}</span>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+
                       {/* Profile Tab */}
                       {settingsTab === "profile" && (
                         <motion.div
@@ -1351,13 +1430,13 @@ export default function App() {
                             <div className="space-y-2">
                               <label className="text-[10px] font-bold uppercase tracking-widest text-claude-muted">Environment Name</label>
                               <div className="p-3 bg-claude-panel border border-claude-border rounded-xl text-sm text-claude-muted cursor-not-allowed">
-                                Qued System V1.0 Hardened
+                                Qued System v1.0.1
                               </div>
                             </div>
                             <div className="space-y-2">
                               <label className="text-[10px] font-bold uppercase tracking-widest text-claude-muted">Local Version</label>
-                              <div className="p-3 bg-claude-panel border border-claude-border rounded-xl text-sm text-claude-muted cursor-not-allowed">
-                                build_hash_8f921a
+                              <div className="p-3 bg-claude-panel border border-claude-border rounded-xl text-sm text-indigo-400 font-mono cursor-not-allowed">
+                                v1.0.1
                               </div>
                             </div>
                           </div>

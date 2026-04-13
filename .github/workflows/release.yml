@@ -27,12 +27,14 @@ jobs:
       - name: Build and Release
         uses: tauri-apps/tauri-action@v0
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
           TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
           TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
         with:
-          tagName: v__VERSION__ # the action will replace __VERSION__ with the version in tauri.conf.json
+          tagName: v__VERSION__
           releaseName: 'v__VERSION__'
-          releaseBody: 'New build of Qued platform.'
+          releaseBody: '✨ Automated production release. See in-app changelogs for details.'
           releaseDraft: false
           prerelease: false
+          owner: pixelsmoothie
+          repo: Qued-DSA-Tracker
