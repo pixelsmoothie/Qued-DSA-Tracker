@@ -33,10 +33,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build and Release
+      - name: Build App
         uses: tauri-apps/tauri-action@v0
         env:
-          GITHUB_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
           TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
           NEXT_PUBLIC_SUPABASE_URL: "https://placeholder.supabase.co"
@@ -44,8 +44,21 @@ jobs:
         with:
           tagName: v__VERSION__
           releaseName: 'v1.0.1 Stable'
-          releaseBody: '✨ Official Production Build. See in-app for changelogs.'
-          releaseDraft: false
+          releaseDraft: true
           prerelease: false
-          owner: pixelsmoothie
-          repo: Qued-DSA-Tracker
+
+      - name: Ship to Public Repo
+        run: |
+          # 1. Create the release on the PUBLIC repo (pointing to its own main branch)
+          gh release create v1.0.1 --repo pixelsmoothie/Qued-DSA-Tracker --title "v1.0.1 Stable" --notes "Official Platinum Release" --target master || echo "Release already exists"
+          
+          # 2. Upload the artifacts
+          gh release upload v1.0.1 src-tauri/target/release/bundle/nsis/*.exe --repo pixelsmoothie/Qued-DSA-Tracker --clobber
+          gh release upload v1.0.1 src-tauri/target/release/bundle/msi/*.msi --repo pixelsmoothie/Qued-DSA-Tracker --clobber
+          
+          # 3. Handle the updater JSON if generated
+          if [ -f "src-tauri/target/release/bundle/updater/latest.json" ]; then
+            gh release upload v1.0.1 src-tauri/target/release/bundle/updater/latest.json --repo pixelsmoothie/Qued-DSA-Tracker --clobber
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
