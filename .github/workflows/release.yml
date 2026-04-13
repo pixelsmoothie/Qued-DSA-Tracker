@@ -26,9 +26,11 @@ jobs:
 
       - name: Sync Tag to Public Repo
         run: |
+          TARGET_BRANCH=$(gh api repos/pixelsmoothie/Qued-DSA-Tracker -q .default_branch)
+          SHA=$(gh api repos/pixelsmoothie/Qued-DSA-Tracker/branches/$TARGET_BRANCH -q .commit.sha)
           gh api -X POST /repos/pixelsmoothie/Qued-DSA-Tracker/git/refs \
             -f ref="refs/tags/${{ github.ref_name }}" \
-            -f sha=$(gh api /repos/pixelsmoothie/Qued-DSA-Tracker/branches/main -q .commit.sha)
+            -f sha=$SHA || true
         env:
           GH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
 
