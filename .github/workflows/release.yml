@@ -23,17 +23,13 @@ jobs:
 
       - name: install Rust stable
         uses: dtolnay/rust-toolchain@stable
-
-      - name: Sync Tag to Public Repo
+ 
+      - name: Pre-create Release on Public Repo
         run: |
-          TARGET_BRANCH=$(gh api repos/pixelsmoothie/Qued-DSA-Tracker -q .default_branch)
-          SHA=$(gh api repos/pixelsmoothie/Qued-DSA-Tracker/branches/$TARGET_BRANCH -q .commit.sha)
-          gh api -X POST /repos/pixelsmoothie/Qued-DSA-Tracker/git/refs \
-            -f ref="refs/tags/${{ github.ref_name }}" \
-            -f sha=$SHA || true
+          gh release create ${{ github.ref_name }} --repo pixelsmoothie/Qued-DSA-Tracker --title "${{ github.ref_name }} Stable" --notes "Automated distribution" --draft || true
         env:
           GH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
-
+ 
       - name: Install dependencies
         run: npm install
 
