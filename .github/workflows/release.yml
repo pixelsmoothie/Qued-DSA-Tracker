@@ -11,6 +11,9 @@ jobs:
       matrix:
         platform: [windows-latest]
 
+    permissions:
+      contents: write
+
     runs-on: ${{ matrix.platform }}
     steps:
       - uses: actions/checkout@v4
