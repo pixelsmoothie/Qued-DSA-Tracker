@@ -38,3 +38,4 @@ jobs:
           prerelease: false
           owner: pixelsmoothie
           repo: Qued-DSA-Tracker
+          tauriScript: npx tauri
