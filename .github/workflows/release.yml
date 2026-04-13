@@ -18,8 +18,11 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: 'npm'
+
+      - name: install Rust stable
+        uses: dtolnay/rust-toolchain@stable
 
       - name: Install dependencies
         run: npm install
@@ -38,4 +41,3 @@ jobs:
           prerelease: false
           owner: pixelsmoothie
           repo: Qued-DSA-Tracker
-          tauriScript: npx tauri
