@@ -15,7 +15,8 @@
 ## Get Started
 
 1.  **Download & Install**: 
-    ### [Download Qued v1.0.1 Stable for Windows](https://github.com/pixelsmoothie/Qued-DSA-Tracker/releases/download/v1.0.1/Qued_v.1_1.0.1_x64-setup.exe)
+    ### [Download and Install from GitHub Releases](https://github.com/pixelsmoothie/Qued-DSA-Tracker/releases/latest)
+
 2.  **Identity**: Create or sign in to your local profile. Everything you do—your themes, code drafts, and progress—is saved to your private "Slate," isolated from other users.
 3.  **The Command Center**: Use the left sidebar to navigate between your Mastery Dashboard, Practice Arena, and Duel Rooms.
 
