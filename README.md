@@ -6,8 +6,6 @@
 
 ---
 
----
-
 ## Get Started
 
 1.  **Deployment**: Visit the **Releases** section on the right-hand sidebar of this repository to find the latest stable workstation build.
@@ -46,7 +44,7 @@ Qued relies on an AI Engine to judge your code. You have two ways to set this up
 ### Option 1: Local Setup (Recommended if you have a powerful GPU)
 If you have an NVIDIA or M-series Mac GPU, you can run the AI entirely on your own machine using Ollama.
 
-1.  **Download Ollama**: Visit [ollama.com](https://ollama.com) and download the installer.
+1.  **Download Ollama**: Visit ollama.com and download the installer.
 2.  **Install & Run**: Run the installer. You will see the Ollama icon in your system tray.
 3.  **Choose your Model**:
     Open your terminal (Command Prompt or PowerShell) and run the command for your hardware:
@@ -65,8 +63,8 @@ If you have an NVIDIA or M-series Mac GPU, you can run the AI entirely on your o
 ### Option 2: Cloud API Setup
 If you don't have a strong GPU, you can use "Cloud" AI keys. Qued supports several providers:
 
-*   **Groq (Fastest)**: [console.groq.com](https://console.groq.com/keys)
-*   **OpenRouter**: [openrouter.ai](https://openrouter.ai/keys)
+*   **Groq (Fastest)**: console.groq.com
+*   **OpenRouter**: openrouter.ai
 *   **Ollama Cloud**: Find your API key in your account dashboard.
 
 ---
